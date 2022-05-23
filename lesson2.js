@@ -8,7 +8,7 @@ let seconds = 0;  // 1秒
 let minutes= 0;  // 1分
 let hours = 0;  // 1時間
 
-let timerID;
+let timerID = null;
 
 function stopWatch(){
   milliseconds100++;
@@ -20,7 +20,6 @@ function stopWatch(){
       seconds = 0;
       if(minutes/60 == 1){
         hours++;
-        minutes = 0;
       }
     }
   }
@@ -29,7 +28,7 @@ function stopWatch(){
 }
 
   start.addEventListener("click", function(){
-  let timerID = setInterval(stopWatch, 100);
+  timerID = setInterval(stopWatch, 100);
   start.disabled = true;
   stop.disabled = false;
   reset.disabled = false;
@@ -48,4 +47,8 @@ reset.addEventListener("click", function(){
   stop.disabled = true;
   reset.disabled = true;
   start.disabled = false;
+  milliseconds100 = 0;
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
 })
